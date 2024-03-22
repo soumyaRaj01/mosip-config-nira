@@ -23,7 +23,6 @@ String RenewalAdultWithChangeOfParticulars = 'RENADULTWITHCOP';
 String NewRegistrationFoundChild = "NEWREGFOUNDCHILD";
 String NewRegistrationWithoutParentNIN = "NEWREGWITHOUTPARENTNIN";
 String NewRegistrationWithParentNIN = "NEWREGPARENTNIN";
-String NewRegistrationWithParentNIN = "NEWREGPARENTNIN";
 String RenewalAdultWithChangeOfParticulars = "RENADULTWITHCOP";
 String RenewalChild = "RENCHILD";
 String NewRegistrationAdult = "NEWREGADULT;
@@ -74,6 +73,7 @@ def getResidenceStatus(identity) {
 def getUserCase(identity) {
      if(identity.containsKey('userCase')) {
         Object val = identity.getOrDefault('userCase', null);
+          System.out.println("userCase" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
@@ -82,6 +82,7 @@ def getUserCase(identity) {
 def getCitizenhipType(identity) {
      if(identity.containsKey('applicantCitizenshipType')) {
         Object val = identity.getOrDefault('applicantCitizenshipType', null);
+        System.out.println("getCitizenhipType" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
@@ -91,6 +92,7 @@ def getCitizenhipType(identity) {
 def getFatherNIN(identity) {
      if(identity.containsKey('fatherNIN')) {
         Object val = identity.getOrDefault('fatherNIN', null);
+        System.out.println("getFatherNIN" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
@@ -100,6 +102,7 @@ def getFatherNIN(identity) {
 def getMotherNIN(identity) {
      if(identity.containsKey('motherNIN')) {
         Object val = identity.getOrDefault('motherNIN', null);
+        System.out.println("getMotherNIN" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
@@ -268,15 +271,6 @@ def getApplicantType() {
   } else if (userCase == NewRegistrationChild && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
     return "017";
   }
-  
-   else if (userCase == NewRegistrationAdult && citizenshipType == ByBirthNonIndigenousCommunity && !isBioExPresent) {
-    return "017";
-  }else if (userCase == NewRegistrationAdult && citizenshipType == ByNaturalisation && !isBioExPresent) {
-    return "017";
-  }else if (userCase == NewRegistrationAdult && citizenshipType == ByRegistration && !isBioExPresent) {
-    return "017";
-  }
-  
   
   
   return "000";
