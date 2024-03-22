@@ -1,7 +1,7 @@
 {
     "ida-mapping": {
         "name": [
-            "fullName"
+            "surname,givenName,otherNames,maidenName,previousName"
         ],
         "dob": [
             "dateOfBirth"
@@ -28,26 +28,51 @@
             "addressLine3"
         ],
         "location1": [
-            "city"
+            "applicantPlaceOfResidenceDistrict"
         ],
         "location2": [
-            "region"
+            "applicantPlaceOfResidenceCounty"
         ],
         "location3": [
-            "province"
+            "applicantPlaceOfResidenceSubCounty"
         ],
         "postalCode": [
-            "postalCode"
+            "applicantPlaceOfResidencePostalAddress"
         ],
+		"NIN":[
+			"NIN"
+		],
+		"applicantPlaceOfResidenceDistrict": [
+			"applicantPlaceOfResidenceDistrict"
+		],
+		"applicantPlaceOfResidenceCounty": [
+			"applicantPlaceOfResidenceCounty"
+		],
+		"applicantPlaceOfResidenceSubCounty": [
+			"applicantPlaceOfResidenceSubCounty"
+		],
+		"applicantPlaceOfResidenceParish": [
+			"applicantPlaceOfResidenceParish"
+		],
+		"applicantPlaceOfResidenceVillage": [
+			"applicantPlaceOfResidenceVillage"
+		],
         "fullAddress": [
-            "addressLine1",
-            "addressLine2",
-            "addressLine3",
-            "city",
-            "region",
-            "province",
-            "postalCode"
+            "applicantPlaceOfResidenceDistrict",
+            "applicantPlaceOfResidenceCounty",
+            "applicantPlaceOfResidenceSubCounty",
+            "applicantPlaceOfResidenceParish",
+            "applicantPlaceOfResidenceVillage"
         ],
+		"applicantForiegnResidenceCountry": [
+			"applicantForiegnResidenceCountry"
+		],
+		"fullAddressForeign": [
+            "applicantForiegnResidenceCountry"
+        ],
+		"applicantPlaceOfResidencePostalAddress": [
+			"applicantPlaceOfResidencePostalAddress"
+		],
         "iris": [
             "CBEFF"
         ],
@@ -57,14 +82,92 @@
         "face": [
             "CBEFF"
         ],
-        "location4" : [ "zone" ],
+		"maritalStatus": [
+			"maritalStatus"
+		],
+		"contacts": [
+			"phone", "homePhoneNumber"
+		],
+		"highestLevelOfEducation": [
+			"highestLevelOfEducation"
+		],
+		"profession": [
+			"profession"
+		],
+		"occupation": [
+			"occupation"
+		],
+		"disabilities": [
+			"disabilities"
+		],
+		"cardExpiryDate": [
+			"cardExpiryDate"
+		],
+		"applicantPlaceOfBirthDistrict": [
+			"applicantPlaceOfBirthDistrict"
+		],
+		"applicantPlaceOfBirthCounty": [
+			"applicantPlaceOfBirthCounty"
+		],
+		"applicantPlaceOfBirthSubCounty": [
+			"applicantPlaceOfBirthSubCounty"
+		],
+		"applicantPlaceOfBirthParish": [
+			"applicantPlaceOfBirthParish"
+		],
+		"applicantPlaceOfBirthVillage": [
+			"applicantPlaceOfBirthVillage"
+		],
+        "fullPlaceOfBirthAddress": [
+            "applicantPlaceOfBirthDistrict",
+            "applicantPlaceOfBirthCounty",
+            "applicantPlaceOfBirthSubCounty",
+            "applicantPlaceOfBirthParish",
+            "applicantPlaceOfBirthVillage"
+        ],
+		"applicantForiegnBirthCountry": [
+			"applicantForiegnBirthCountry"
+		],
+		"fullPlaceOfBirthBirthForeign": [
+            "applicantForiegnBirthCountry"
+        ],
+		"applicantPlaceOfOriginDistrict": [
+			"applicantPlaceOfOriginDistrict"
+		],
+		"applicantPlaceOfOriginCounty": [
+			"applicantPlaceOfOriginCounty"
+		],
+		"applicantPlaceOfOriginSubCounty": [
+			"applicantPlaceOfOriginSubCounty"
+		],
+		"applicantPlaceOfOriginParish": [
+			"applicantPlaceOfOriginParish"
+		],
+		"applicantPlaceOfOriginVillage": [
+			"applicantPlaceOfOriginVillage"
+		],
+        "fullPlaceOfOriginAddress": [
+            "applicantPlaceOfOriginDistrict",
+            "applicantPlaceOfOriginCounty",
+            "applicantPlaceOfOriginSubCounty",
+            "applicantPlaceOfOriginParish",
+            "applicantPlaceOfOriginVillage"
+        ],
+		"applicantForiegnOriginCountry": [
+			"applicantForiegnOriginCountry"
+		],
+		"fullPlaceOfBirthOriginForeign": [
+            "applicantForiegnOriginCountry"
+        ],
+        "location4" : [ "applicantPlaceOfResidenceParish" ],
         "residenceStatus" : ["residenceStatus" ],
         "preferredLanguage" : ["preferredLang" ],
         "locationProfile": [
-            "city",
-            "region",
-            "province",
-            "zone"
+            "applicantPlaceOfResidenceDistrict",
+            "applicantPlaceOfResidenceCounty",
+            "applicantPlaceOfResidenceSubCounty",
+            "applicantPlaceOfResidenceParish",
+			"applicantPlaceOfResidenceVillage"
         ]
     }
 }
