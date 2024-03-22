@@ -17,6 +17,36 @@ String FEMALE = 'FLE';
 String NonResident = "FRN";
 String Resident = "UGA";
 String Others = "OTH";
+
+String changeOfParticulars = 'COP';
+String RenewalAdultWithChangeOfParticulars = 'RENADULTWITHCOP';
+String NewRegistrationFoundChild = "NEWREGFOUNDCHILD";
+String NewRegistrationWithoutParentNIN = "NEWREGWITHOUTPARENTNIN";
+String NewRegistrationWithParentNIN = "NEWREGPARENTNIN";
+String NewRegistrationWithParentNIN = "NEWREGPARENTNIN";
+String RenewalAdultWithChangeOfParticulars = "RENADULTWITHCOP";
+String RenewalChild = "RENCHILD";
+String NewRegistrationAdult = "NEWREGADULT;
+String NewRegistrationChild = "NEWREGCHILD";
+
+
+
+String ByBirthNonIndigenousCommunity = "CBBNON";
+String ByBirthIndigenousCommunity = "CBBI";
+String ByNaturalisation = "NAT";
+String ByRegistration = "CBREG";
+
+
+
+String fatherNIN;
+String motherNIN;
+
+
+
+
+
+
+
 String DATE_PATTERN = "yyyy/MM/dd";
 String regex = "^\\d{4}(\\/)(((0)[1-9])|((1)[0-2]))(\\/)([0-2][0-9]|(3)[0-1])$";
 Pattern pattern = Pattern.compile(regex);
@@ -39,6 +69,46 @@ def getResidenceStatus(identity) {
 
     return null;
 }
+
+
+def getUserCase(identity) {
+     if(identity.containsKey('userCase')) {
+        Object val = identity.getOrDefault('userCase', null);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+    return null;
+}
+
+def getCitizenhipType(identity) {
+     if(identity.containsKey('applicantCitizenshipType')) {
+        Object val = identity.getOrDefault('applicantCitizenshipType', null);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+    return null;
+}
+
+
+def getFatherNIN(identity) {
+     if(identity.containsKey('fatherNIN')) {
+        Object val = identity.getOrDefault('fatherNIN', null);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+    return null;
+}
+
+
+def getMotherNIN(identity) {
+     if(identity.containsKey('motherNIN')) {
+        Object val = identity.getOrDefault('motherNIN', null);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+    return null;
+}
+
+
+
+
+
 
 def getGenderType(identity) {
     if(identity.containsKey('genderCode')) {
@@ -92,6 +162,11 @@ def getApplicantType() {
   String genderType = getGenderType(identity);
   String ageCode = getAgeCode(identity);
   boolean isBioExPresent = getBioExceptionFlag(identity);
+
+  String citizenshipType= getCitizenhipType(identity);
+  String userCase= getUserCase(identity);
+  String motherNIN= getMotherNIN(identity);
+  String fatherNIN= getFatherNIN(identity);
   
   if( ageCode == 'KER-MSD-151' ) { return "KER-MSD-151"; }
   
@@ -186,6 +261,22 @@ def getApplicantType() {
   } else if (itc == Resident && genderType == Others && ageCode == MINOR && !isBioExPresent) {
     return "015";
   }
+
+  
+  else if (userCase == NewRegistrationAdult && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
+    return "017";
+  } else if (userCase == NewRegistrationChild && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
+    return "017";
+  }
+  
+   else if (userCase == NewRegistrationAdult && citizenshipType == ByBirthNonIndigenousCommunity && !isBioExPresent) {
+    return "017";
+  }else if (userCase == NewRegistrationAdult && citizenshipType == ByNaturalisation && !isBioExPresent) {
+    return "017";
+  }else if (userCase == NewRegistrationAdult && citizenshipType == ByRegistration && !isBioExPresent) {
+    return "017";
+  }
+  
   
   
   return "000";
