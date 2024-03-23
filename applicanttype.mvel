@@ -18,33 +18,18 @@ String NonResident = "FRN";
 String Resident = "UGA";
 String Others = "OTH";
 
-String changeOfParticulars = 'COP';
-String RenewalAdultWithChangeOfParticulars = 'RENADULTWITHCOP';
-String NewRegistrationFoundChild = "NEWREGFOUNDCHILD";
-String NewRegistrationWithoutParentNIN = "NEWREGWITHOUTPARENTNIN";
-String NewRegistrationWithParentNIN = "NEWREGPARENTNIN";
-String RenewalAdultWithChangeOfParticulars = "RENADULTWITHCOP";
-String RenewalChild = "RENCHILD";
-String NewRegistrationAdult = "NEWREGADULT;
-String NewRegistrationChild = "NEWREGCHILD";
-
-
+String New = 	 "NEWREG";
+String Renewal = "RENEWAL";
+String Lost= 	 "LOST";
+String Upadte =  "UPDATE";
 
 String ByBirthNonIndigenousCommunity = "CBBNON";
 String ByBirthIndigenousCommunity = "CBBI";
 String ByNaturalisation = "NAT";
 String ByRegistration = "CBREG";
 
-
-
 String fatherNIN;
 String motherNIN;
-
-
-
-
-
-
 
 String DATE_PATTERN = "yyyy/MM/dd";
 String regex = "^\\d{4}(\\/)(((0)[1-9])|((1)[0-2]))(\\/)([0-2][0-9]|(3)[0-1])$";
@@ -266,9 +251,9 @@ def getApplicantType() {
   }
 
   
-  else if (userCase == NewRegistrationAdult && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
+  else if (userCase == NEWREG && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
     return "017";
-  } else if (userCase == NewRegistrationChild && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
+  } else if (userCase == NEWREG && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
     return "017";
   }
   
