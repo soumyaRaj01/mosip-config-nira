@@ -18,7 +18,7 @@ String NonResident = "FRN";
 String Resident = "UGA";
 String Others = "OTH";
 
-String New = 	 "NEWREG";
+String New = 	 "NEW";
 String Renewal = "RENEWAL";
 String Lost= 	 "LOST";
 String Upadte =  "UPDATE";
@@ -77,7 +77,7 @@ def getCitizenhipType(identity) {
 def getFatherNIN(identity) {
      if(identity.containsKey('fatherNIN')) {
         Object val = identity.getOrDefault('fatherNIN', null);
-        System.out.println("getFatherNIN" + val);
+    
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
@@ -87,7 +87,7 @@ def getFatherNIN(identity) {
 def getMotherNIN(identity) {
      if(identity.containsKey('motherNIN')) {
         Object val = identity.getOrDefault('motherNIN', null);
-        System.out.println("getMotherNIN" + val);
+     
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
@@ -158,105 +158,33 @@ def getApplicantType() {
   
   if( ageCode == 'KER-MSD-151' ) { return "KER-MSD-151"; }
   
-  if(itc == null || genderType == null || ageCode == null || isBioExPresent == null ) { 
+  if(userCase == null || genderType == null || ageCode == null || isBioExPresent == null ) { 
       return isUpdateFlow(identity) ? "000" : "KER-MSD-147";
   }
   
   System.out.println(itc + " - " + genderType + " - " + ageCode + " - " + isBioExPresent);
-
-  if (itc == NonResident && genderType == MALE && ageCode == CHILD && !isBioExPresent) {
+  if(userCase=Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  {
     return "001";
-  } else if (itc == NonResident && genderType == MALE && ageCode == ADULT && !isBioExPresent) {
+  }
+  else if(userCase=Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  {
     return "002";
-  } else if (itc == Resident && genderType == MALE && ageCode == CHILD && !isBioExPresent) {
-    return "003";
-  } else if (itc == Resident && genderType == MALE && ageCode == ADULT && !isBioExPresent) {
+  }
+  else if(userCase=Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  {
+   return "003";
+  }
+  else if(userCase=Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  {
     return "004";
-  } else if (itc == NonResident && genderType == FEMALE && ageCode == CHILD && !isBioExPresent) {
-    return "005";
-  } else if (itc == NonResident && genderType == FEMALE && ageCode == ADULT && !isBioExPresent) {
-    return "006";
-  } else if (itc == Resident && genderType == FEMALE && ageCode == CHILD && !isBioExPresent) {
-    return "007";
-  } else if (itc == Resident && genderType == FEMALE && ageCode == ADULT && !isBioExPresent) {
-    return "008";
-  } else if (itc == NonResident && genderType == Others && ageCode == CHILD && !isBioExPresent) {
-    return "005";
-  } else if (itc == NonResident && genderType == Others && ageCode == ADULT && !isBioExPresent) {
-    return "006";
-  } else if (itc == Resident && genderType == Others && ageCode == CHILD && !isBioExPresent) {
-    return "007";
-  } else if (itc == Resident && genderType == Others && ageCode == ADULT && !isBioExPresent) {
-    return "008";
-  } else if (itc == NonResident && genderType == MALE && ageCode == CHILD && isBioExPresent) {
-    return "009";
-  } else if (itc == NonResident && genderType == MALE && ageCode == ADULT && isBioExPresent) {
-    return "010";
-  } else if (itc == Resident && genderType == MALE && ageCode == CHILD && isBioExPresent) {
-    return "011";
-  } else if (itc == Resident && genderType == MALE && ageCode == ADULT && isBioExPresent) {
-    return "012";
-  } else if (itc == NonResident && genderType == FEMALE && ageCode == CHILD && isBioExPresent) {
-    return "013";
-  } else if (itc == NonResident && genderType == FEMALE && ageCode == ADULT && isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == FEMALE && ageCode == CHILD && isBioExPresent) {
-    return "015";
-  } else if (itc == Resident && genderType == FEMALE && ageCode == ADULT && isBioExPresent) {
-    return "016";
-  } else if (itc == NonResident && genderType == Others && ageCode == CHILD && isBioExPresent) {
-    return "013";
-  } else if (itc == NonResident && genderType == Others && ageCode == ADULT && isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == Others && ageCode == CHILD && isBioExPresent) {
-    return "015";
-  } else if (itc == Resident && genderType == Others && ageCode == ADULT && isBioExPresent) {
-    return "016";
   } 
-    
-	else if (itc == NonResident && genderType == MALE && ageCode == MINOR && isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == MALE && ageCode == MINOR && isBioExPresent) {
-    return "015";
-  }
   
-  else if (itc == NonResident && genderType == FEMALE && ageCode == MINOR && isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == FEMALE && ageCode == MINOR && isBioExPresent) {
-    return "015";
-  }
   
-  else if (itc == NonResident && genderType == Others && ageCode == MINOR && isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == Others && ageCode == MINOR && isBioExPresent) {
-    return "015";
-  }
   
-  else if (itc == NonResident && genderType == MALE && ageCode == MINOR && !isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == MALE && ageCode == MINOR && !isBioExPresent) {
-    return "015";
-  }
-  
-   else if (itc == NonResident && genderType == FEMALE && ageCode == MINOR && !isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == FEMALE && ageCode == MINOR && !isBioExPresent) {
-    return "015";
-  }
-  
-  else if (itc == NonResident && genderType == Others && ageCode == MINOR && !isBioExPresent) {
-    return "014";
-  } else if (itc == Resident && genderType == Others && ageCode == MINOR && !isBioExPresent) {
-    return "015";
+  else {
+    return "000";
   }
 
-  
-  else if (userCase == NEWREG && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
-    return "017";
-  } else if (userCase == NEWREG && citizenshipType == ByBirthIndigenousCommunity && !isBioExPresent) {
-    return "017";
-  }
-  
-  
-  return "000";
+
 }
