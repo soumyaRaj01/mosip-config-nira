@@ -163,28 +163,23 @@ def getApplicantType() {
   }
   
   System.out.println(itc + " - " + genderType + " - " + ageCode + " - " + isBioExPresent);
-  if(userCase=Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  if(userCase==Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
     return "001";
   }
-  else if(userCase=Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  else if(userCase==Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "002";
   }
-  else if(userCase=Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "003";
   }
-  else if(userCase=Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  else if(userCase==Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "004";
-  } 
-  
-  
-  
+  }  
   else {
     return "000";
   }
-
-
 }
