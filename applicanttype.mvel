@@ -152,11 +152,6 @@ def getApplicantType() {
   String fatherNIN= getFatherNIN(identity);
   
   if( ageCode == 'KER-MSD-151' ) { return "KER-MSD-151"; }
-  if(userCase == null || genderType == null || ageCode == null || isBioExPresent == null ) { 
-      return isUpdateFlow(identity) ? "000" : "KER-MSD-147";
-  }
-  
-  System.out.println(itc + " - " + genderType + " - " + ageCode + " - " + isBioExPresent);
   
  if(userCase==Renewal && ageCode == ADULT  )
   {
