@@ -23,7 +23,7 @@ String Renewal = "RENEWAL";
 String Lost= 	 "LOST";
 String Upadte =  "UPDATE";
 
-String ByBirthNonIndigenousCommunity = "CBBNON";
+String dualCitizenship= "DLN";
 String ByBirthIndigenousCommunity = "CBBI";
 String ByNaturalisation = "NAT";
 String ByRegistration = "CBREG";
@@ -93,11 +93,6 @@ def getMotherNIN(identity) {
     return null;
 }
 
-
-
-
-
-
 def getGenderType(identity) {
     if(identity.containsKey('genderCode')) {
         return identity.getOrDefault('genderCode', null);
@@ -157,29 +152,29 @@ def getApplicantType() {
   String fatherNIN= getFatherNIN(identity);
   
   if( ageCode == 'KER-MSD-151' ) { return "KER-MSD-151"; }
+
   
-  if(userCase == null || genderType == null || ageCode == null || isBioExPresent == null ) { 
-      return isUpdateFlow(identity) ? "000" : "KER-MSD-147";
-  }
-  
-  System.out.println(itc + " - " + genderType + " - " + ageCode + " - " + isBioExPresent);
-  if(userCase==Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+ if(userCase==Renewal && ageCode == ADULT  )
   {
     return "001";
   }
-  else if(userCase==Renewal && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+ 
+  else if(userCase==Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "002";
-  }
-  else if(userCase==Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  }  
+
+
+  else if(userCase==Upadte && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "003";
   }
-  else if(userCase==Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  else if(userCase==Upadte && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "004";
-  }  
-  else {
+    
+  } 
+
+else {
     return "000";
   }
-}
