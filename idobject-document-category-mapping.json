@@ -35,6 +35,27 @@
     },
     "city": {
       "documentCategory" : "proofOfAddress"
-    }
-  }
-} 
+    },
+	"applicantPlaceOfDistrict": {
+		"documentCategory" : "proofOfAddress"
+	},
+	"fatherNIN": {
+		"documentCategory" : "proofOfCitizenship"
+	},
+	"motherNIN": {
+		"documentCategory" : "proofOfCitizenship"
+	},
+	"guardianNIN_AIN": {
+		"documentCategory" : "proofOfCitizenship"
+	},
+	"declarantNIN": {
+		"documentCategory" : "proofOfCitizenship"
+	},
+	"applicantPlaceOfBirthDistrict": {
+		"documentCategory" : "proofOfBirth"
+	},
+	"spouseSurname": {
+		"documentCategory" : "proofOfRelationship"
+	}
+
+} }
