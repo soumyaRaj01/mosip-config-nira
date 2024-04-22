@@ -21,7 +21,7 @@ String Others = "OTH";
 String New = 	 "NEW";
 String Renewal = "RENEWAL";
 String Lost= 	 "LOST";
-String Upadte =  "UPDATE";
+String Update =  "UPDATE";
 
 String dualCitizenship= "DLN";
 String ByBirthIndigenousCommunity = "CBBI";
@@ -151,22 +151,18 @@ def getApplicantType() {
   if( ageCode == 'KER-MSD-151' ) { return "KER-MSD-151"; }
 
   
- if(userCase==Renewal && ageCode == ADULT  )
+ if(userCase==Renewal)
   {
     return "001";
-  }
- 
-  else if(userCase==Lost && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  } else if(userCase==Lost)
   {
     return "002";
   }  
-
-
-  else if(userCase==Upadte && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==Update && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "003";
   }
-  else if(userCase==Upadte && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  else if(userCase==Update && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "004";
   } 
