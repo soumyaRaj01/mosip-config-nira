@@ -587,10 +587,10 @@
         "pob": {
             "value": "proofOfDateOfBirth"
         },
-        "POADTN": {
+        "poadtn": {
             "value": "proofOfAdoption"
         },
-        "POC": {
+        "poc": {
             "value": "proofOfCitizenship"
         },
         "poe": {
