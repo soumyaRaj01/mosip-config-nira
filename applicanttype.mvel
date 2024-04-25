@@ -68,6 +68,10 @@ def getCitizenhipType(identity) {
         Object val = identity.getOrDefault('applicantCitizenshipTypeCode', null);
         System.out.println("getCitizenhipType" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    } else if (identity.containsKey('applicantCitizenshipType')) {
+        Object val = identity.getOrDefault('applicantCitizenshipType', null);
+        System.out.println("getCitizenhipType" + val);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
 }
