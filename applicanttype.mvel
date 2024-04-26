@@ -194,6 +194,17 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "005";
   }
+  else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == MINOR  )
+  {
+   return "025";
+  }
+
+  else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && (fatherNIN != null || motherNIN !=null)   && ageCode == MINOR  )
+  {
+   return "026";
+  }
+
+
   else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "006";
@@ -202,6 +213,9 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "007";
   }
+
+ 
+
   else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && (fatherNIN != null || motherNIN !=null)  && ageCode == ADULT  )
   {
     return "008";
