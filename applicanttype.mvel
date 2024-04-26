@@ -164,15 +164,32 @@ def getApplicantType() {
   {
     return "002";
   }  
-  else if(userCase==Update && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==Update  && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "003";
   }
-  else if(userCase==Update && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
+  else if(userCase==Update && (fatherNIN != null || motherNIN !=null) && ageCode == CHILD  )
+  {
+   return "022";
+  }
+ else if(userCase==Update  && fatherNIN==null && motherNIN==null && ageCode == MINOR  )
+  {
+   return "021";
+  }
+
+else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode == MINOR  )
+  {
+   return "023";
+  }
+
+  else if(userCase==Update  && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "004";
   } 
-
+else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode == ADULT  )
+  {
+   return "024";
+  }
    else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "005";
@@ -181,8 +198,7 @@ def getApplicantType() {
   {
     return "006";
   } 
-  
-   else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
+     else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
   {
    return "007";
   }
