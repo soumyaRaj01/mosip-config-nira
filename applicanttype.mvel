@@ -190,6 +190,10 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "024";
   }
+  else if(userCase==New && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  {
+   return "033";
+  }
    else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "005";
@@ -225,6 +229,10 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "009";
   }
+  else if(userCase==New && citizenshipType==ByNaturalisation && fatherNIN==null && motherNIN==null && ageCode == MINOR  )
+  {
+   return "027";
+  }
   else if(userCase==New && citizenshipType==ByNaturalisation && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "010";
@@ -233,6 +241,11 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   else if(userCase==New && citizenshipType==ByNaturalisation && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
   {
    return "011";
+  }
+
+  else if(userCase==New && citizenshipType==ByNaturalisation && (fatherNIN != null || motherNIN !=null)   && ageCode == MINOR  )
+  {
+   return "028";
   }
   else if(userCase==New && citizenshipType==ByNaturalisation && (fatherNIN != null || motherNIN !=null)  && ageCode == ADULT  )
   {
@@ -243,15 +256,24 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "013";
   }
+else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
+  {
+   return "015";
+  }
+   else if(userCase==New && citizenshipType==ByRegistration && fatherNIN==null && motherNIN==null && ageCode == MIROR  )
+  {
+   return "029";
+  }
+  else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null || motherNIN !=null)   && ageCode == MINOR  )
+  {
+   return "030";
+  }
   else if(userCase==New && citizenshipType==ByRegistration && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "014";
   } 
   
-  else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
-  {
-   return "015";
-  }
+  
   else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null || motherNIN !=null)  && ageCode == ADULT  )
   {
     return "016";
@@ -260,6 +282,16 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "017";
   }
+ else if(userCase==New && citizenshipType==dualCitizenship && fatherNIN==null && motherNIN==null && ageCode == MINOR  )
+  {
+   return "031";
+  }
+
+ else if(userCase==New && citizenshipType==dualCitizenship && (fatherNIN != null || motherNIN !=null)   && ageCode == MINOR  )
+  {
+   return "032";
+  }
+
   else if(userCase==New && citizenshipType==dualCitizenship && fatherNIN==null && motherNIN==null && ageCode == ADULT  )
   {
     return "018";
