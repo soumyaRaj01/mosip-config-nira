@@ -305,6 +305,13 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
     return "020";
   } 
 
+
+  else if(userCase==New && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  {
+    return "033";
+  }
+ 
+
    else {
     return "000";
   }
