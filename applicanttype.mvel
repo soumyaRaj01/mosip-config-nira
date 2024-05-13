@@ -304,6 +304,10 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
   {
     return "020";
   } 
+ else if(userCase==New && foundLink==true  && ageCode == CHILD  )
+  {
+    return "034";
+  } 
 
    else {
     return "000";
