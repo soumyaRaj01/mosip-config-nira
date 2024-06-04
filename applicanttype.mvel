@@ -304,7 +304,7 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
   {
     return "020";
   } 
- else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity  && ageCode == CHILD && foundLink==true  )
+ else if(foundLink==true  )
   {
     return "034";
   } 
