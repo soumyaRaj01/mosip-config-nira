@@ -194,6 +194,10 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "033";
   }
+else if(foundLink==true  )
+  {
+    return "034";
+  } 
    else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "005";
