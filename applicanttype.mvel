@@ -96,6 +96,11 @@ def getMotherNIN(identity) {
     }
     return null;
 }
+def getFoundLink(identity) {
+    if(!identity.containsKey('foundLink')) { return false; }
+    Object val = identity.getOrDefault('foundLink', null);
+    return (val == 'true') ? true : (( val == 'false' ) ? false : null);
+}
 
 def getGenderType(identity) {
     if(identity.containsKey('genderCode')) {
@@ -186,7 +191,7 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
     return "004";
   } 
-else if(foundLink===true  )
+else if( userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD && foundLink==true  )
   {
     return "034";
   } 
