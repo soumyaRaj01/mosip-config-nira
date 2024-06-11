@@ -57,6 +57,16 @@
         "NIN": {
             "value": "NIN"
         },
+
+"NIN_number_verified": { "value": "NINVerified"
+},
+"updated_at": { "value": "updatedAt"
+},
+"individual_id": {
+    "value": "individual_id"
+ },
+"selectedHandles" : { "value" : "selectedHandles"
+},
         "cardExpiryDate": {
             "value": "cardExpiryDate"
         },
