@@ -91,15 +91,17 @@ def getFatherNIN(identity) {
 def getMotherNIN(identity) {
      if(identity.containsKey('motherNIN')) {
         Object val = identity.getOrDefault('motherNIN', null);
-     
-        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+          return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
 }
-def getFoundLink(identity) {
-    if(!identity.containsKey('foundLink')) { return false; }
-    Object val = identity.getOrDefault('foundLink', null);
-    return (val == 'true') ? true : (( val == 'false' ) ? false : null);
+getFoundLink( identity) {
+    if (identity.containsKey("foundLink")) {
+        Object val = identity.getOrDefault("foundLink", null);
+        return (val instanceof Boolean && (Boolean) val) || "true".equals(val) ? true : 
+               (val instanceof Boolean && !(Boolean) val) || "false".equals(val) ? false : null;
+    }
+    return null;
 }
 
 def getGenderType(identity) {
