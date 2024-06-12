@@ -313,12 +313,7 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
   {
     return "020";
   } 
- else if(foundLink==true  )
-  {
-    return "034";
-  } 
-
-   else {
+ else {
     return "000";
   }
 }
