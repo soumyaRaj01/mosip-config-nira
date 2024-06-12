@@ -95,7 +95,8 @@ def getMotherNIN(identity) {
     }
     return null;
 }
-getFoundLink( identity) {
+
+def getFoundLink( identity) {
     if (identity.containsKey("foundLink")) {
         Object val = identity.getOrDefault("foundLink", null);
         return (val instanceof Boolean && (Boolean) val) || "true".equals(val) ? true : 
