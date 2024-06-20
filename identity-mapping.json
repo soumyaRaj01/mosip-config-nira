@@ -529,6 +529,9 @@
         "preferredLanguage": {
             "value": "preferredLang"
         },
+        "location": {
+            "value": "District"
+        },
         "location1": {
             "value": "District"
         },
