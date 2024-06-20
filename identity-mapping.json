@@ -530,7 +530,7 @@
             "value": "preferredLang"
         },
         "location": {
-            "value": "District"
+            "value": "applicantPlaceOfResidenceDistrict"
         },
         "location1": {
             "value": "District"
