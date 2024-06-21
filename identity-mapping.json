@@ -36,7 +36,7 @@
         "phone": {
             "value": "phone"
         },
-        "phoneNumber": {
+        "phone_number": {
             "value": "phone"
         },
         "homePhoneNumber": {
@@ -58,7 +58,7 @@
             "value": "NIN"
         },
 
-"NIN_number_verified": { "value": "NINVerified"
+"phone_number_verified": { "value": "phoneVerified"
 },
 "updated_at": { "value": "updatedAt"
 },
