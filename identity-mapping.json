@@ -4,7 +4,7 @@
             "value": "IDSchemaVersion"
         },
         "name": {
-            "value": "surname,givenName,otherNames,maidenName,previousName"
+            "value": "surname"
         },
         "fullName": {
             "value": "surname,givenName,otherNames,maidenName,previousName"
@@ -36,7 +36,7 @@
         "phone": {
             "value": "phone"
         },
-        "phoneNumber": {
+        "phone_number": {
             "value": "phone"
         },
         "homePhoneNumber": {
@@ -57,6 +57,16 @@
         "NIN": {
             "value": "NIN"
         },
+
+"phone_number_verified": { "value": "phoneVerified"
+},
+"updated_at": { "value": "updatedAt"
+},
+"individual_id": {
+    "value": "individual_id"
+ },
+"selectedHandles" : { "value" : "selectedHandles"
+},
         "cardExpiryDate": {
             "value": "cardExpiryDate"
         },
@@ -518,6 +528,9 @@
         },
         "preferredLanguage": {
             "value": "preferredLang"
+        },
+        "location": {
+            "value": "applicantPlaceOfResidenceDistrict"
         },
         "location1": {
             "value": "District"

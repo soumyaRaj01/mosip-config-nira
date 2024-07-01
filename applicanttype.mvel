@@ -91,10 +91,17 @@ def getFatherNIN(identity) {
 def getMotherNIN(identity) {
      if(identity.containsKey('motherNIN')) {
         Object val = identity.getOrDefault('motherNIN', null);
-     
-        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+          return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
+}
+
+def getFoundLink( identity) {
+    if (identity.containsKey("foundLink")) {
+        Object val = identity.getOrDefault("foundLink", false);
+        return  val;
+    }
+    return false;
 }
 
 def getGenderType(identity) {
@@ -153,7 +160,7 @@ def getApplicantType() {
   String userCase= getUserCase(identity);
   String motherNIN= getMotherNIN(identity);
   String fatherNIN= getFatherNIN(identity);
-  
+  boolean foundLink=getFoundLink(identity);
   if( ageCode == 'KER-MSD-151' ) { return "KER-MSD-151"; }
 
   
@@ -186,6 +193,10 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
     return "004";
   } 
+else if( userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD && foundLink )
+  {
+    return "034";
+  } 
 else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode == ADULT  )
   {
    return "024";
@@ -194,7 +205,7 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "033";
   }
-   else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
   {
    return "005";
   }
@@ -304,8 +315,7 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
   {
     return "020";
   } 
-
-   else {
+ else {
     return "000";
   }
 }
