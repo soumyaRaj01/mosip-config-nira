@@ -338,7 +338,7 @@
          </otherwise>
       </choice>
    </route>
-   <route id="bio-dedupe-->uin-generation new route">
+   <route id="bio-dedupe-->citizenship-verification new route">
       <from uri="eventbus://bio-dedupe-new-bus-out" />
       <log message="bio-dedupe-->uin-generation new route ${bodyAs(String)}" />
       <choice>
@@ -369,11 +369,11 @@
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
          <otherwise>
-            <to uri="eventbus://uin-generator-bus-in" />
+            <to uri="eventbus://citizenship-verification-bus-in" />
          </otherwise>
       </choice>
    </route>
-   <route id="verification route-->uin-generator new route">
+   <route id="verification route-->citizenship-verification new route">
       <from uri="eventbus://verification-new-bus-out" />
       <log message="verification route-->uin-generator new route ${bodyAs(String)}" />
       <choice>
@@ -392,7 +392,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://uin-generator-bus-in" />
+            <to uri="eventbus://citizenship-verification-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -419,7 +419,7 @@
          </otherwise>
       </choice>
    </route>
-   <route id="manual-adjudication-->uin-generation new route">
+   <route id="manual-adjudication-->citizenship-verification new route">
       <from uri="eventbus://manual-adjudication-new-bus-out" />
       <log message="manual-adjudication-->uin-generation new route ${bodyAs(String)}" />
       <choice>
@@ -438,10 +438,33 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://uin-generator-bus-in" />
+            <to uri="eventbus://citizenship-verification-bus-in" />
          </otherwise>
       </choice>
    </route>
+   <route id="citizenship-verification-->uin-generation new route">
+         <from uri="eventbus://citizenship-verification-new-bus-out" />
+         <log message="citizenship-verification-->uin-generation new route ${bodyAs(String)}" />
+         <choice>
+            <when>
+               <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
+               <to uri="workflow-cmd://complete-as-failed" />
+               <to uri="workflow-cmd://anonymous-profile" />
+            </when>
+            <when>
+               <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
+               <to uri="workflow-cmd://mark-as-reprocess" />
+            </when>
+            <when>
+               <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
+               <to uri="workflow-cmd://complete-as-rejected" />
+               <to uri="workflow-cmd://anonymous-profile" />
+            </when>
+            <otherwise>
+               <to uri="eventbus://uin-generator-bus-in" />
+            </otherwise>
+         </choice>
+   </route>   
    <!-- UIN Generator to biometric-extraction Route -->
    <route id="uin-generation route-->biometric-extraction-stage new route">
       <from uri="eventbus://uin-generator-new-bus-out" />
