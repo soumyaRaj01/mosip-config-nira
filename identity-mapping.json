@@ -58,7 +58,7 @@
             "value": "NIN"
         },
 
-"phone_number_verified": { "value": "phoneVerified"
+"NIN_number_verified": { "value": "NINVerified"
 },
 "updated_at": { "value": "updatedAt"
 },
