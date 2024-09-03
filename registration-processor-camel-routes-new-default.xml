@@ -368,8 +368,12 @@
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'manual-adjudication-bus-in')]</jsonpath>
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
-         <otherwise>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent')]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
+         </when>
+         <otherwise>
+             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -391,8 +395,12 @@
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-         <otherwise>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent')]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
+         </when>
+         <otherwise>
+             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -437,8 +445,12 @@
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-         <otherwise>
+         <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent')]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
+         </when>
+         <otherwise>
+             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
