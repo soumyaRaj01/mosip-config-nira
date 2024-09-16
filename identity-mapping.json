@@ -168,7 +168,7 @@
         },
 
 "applicantCitizenshipType": {
-            "value": "applicantCitizenshipType"
+            "value": "userServiceType"
         },
         
         "applicantPlaceOfOriginDistrict": {
