@@ -55,9 +55,9 @@ def getResidenceStatus(identity) {
 }
 
 def getUserCase(identity) {
-     if(identity.containsKey('userCase')) {
-        Object val = identity.getOrDefault('userCase', null);
-          System.out.println("userCase" + val);
+     if(identity.containsKey('userService')) {
+        Object val = identity.getOrDefault('userService', null);
+          System.out.println("userService" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
