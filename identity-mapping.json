@@ -167,7 +167,7 @@
             "value": "applicantPlaceOfBirthDistrict,applicantPlaceOfBirthCounty,applicantPlaceOfBirthSubCounty,applicantPlaceOfBirthParish,applicantPlaceOfBirthVillage"
         },
 
-"applicantCitizenshipType": {
+"userServiceType": {
             "value": "userServiceType"
         },
         
