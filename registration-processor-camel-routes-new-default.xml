@@ -369,7 +369,7 @@
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent')]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
