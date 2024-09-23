@@ -167,6 +167,33 @@ def getApplicantType() {
  if(userCase==Renewal)
   {
     return "001";
+  } else if(citizenshipType==ByBirthIndigenousCommunity && ageCode == ADULT && !(foundLink))
+  {
+    return "600";
+  } 
+  else if(citizenshipType==ByArticleNine && ageCode == ADULT && !(foundLink))
+  {
+    return "601";
+  } 
+  else if(citizenshipType==ByNaturalisation && ageCode == ADULT && !(foundLink))
+  {
+    return "602";
+  } 
+  else if(citizenshipType==ByRegistration && ageCode == ADULT && !(foundLink))
+  {
+    return "603";
+  } 
+  else if(citizenshipType==dualCitizenship && ageCode == ADULT && !(foundLink))
+  {
+    return "604";
+  } 
+  else if(ageCode == MINOR || ageCode == CHILD && !(foundLink))
+  {
+    return "605";
+  } 
+  else if(foundLink)
+  {
+    return "606";
   } else if(userCase==Lost)
   {
     return "002";
