@@ -27,6 +27,7 @@ String dualCitizenship= "DLN";
 String ByBirthIndigenousCommunity = "CBBI";
 String ByNaturalisation = "NAT";
 String ByRegistration = "CBREG";
+String ByArticleNine = "CUAN";
 
 String fatherNIN;
 String motherNIN;
@@ -70,9 +71,9 @@ def getCitizenhipType(identity) {
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     } 
 
-    if (identity.containsKey('applicantCitizenshipType')) {
-        Object val = identity.getOrDefault('applicantCitizenshipType', null);
-        System.out.println("getCitizenhipType" + val);
+    if (identity.containsKey('userServiceType')) {
+        Object val = identity.getOrDefault('userServiceType', null);
+        System.out.println("userServiceType" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
     return null;
