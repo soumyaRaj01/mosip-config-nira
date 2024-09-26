@@ -79,6 +79,15 @@ def getCitizenhipType(identity) {
     return null;
 }
 
+def getCitizenhipTypeCode(identity) {
+    if (identity.containsKey('userServiceTypeCode')) {
+        Object val = identity.getOrDefault('userServiceTypeCode', null);
+        System.out.println("userServiceTypeCode: " + val);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+	
+    return null;
+}
 
 def getFatherNIN(identity) {
      if(identity.containsKey('fatherNIN')) {
@@ -99,8 +108,8 @@ def getMotherNIN(identity) {
 
 def getFoundLink( identity) {
     if (identity.containsKey("foundLink")) {
-        Object val = identity.getOrDefault("foundLink", false);
-        return  val;
+        Object val = identity.getOrDefault("foundLink", null);
+        return val == null ? false : (val instanceof String ? ; (val == "Y" ? true : false) : val);
     }
     return false;
 }
@@ -158,6 +167,7 @@ def getApplicantType() {
   boolean isBioExPresent = getBioExceptionFlag(identity);
 
   String citizenshipType= getCitizenhipType(identity);
+  String citizenshipTypeCode = getCitizenhipTypeCode(identity);
   String userCase= getUserCase(identity);
   String motherNIN= getMotherNIN(identity);
   String fatherNIN= getFatherNIN(identity);
@@ -169,23 +179,23 @@ def getApplicantType() {
   {
     return "001";
   }
-  else if(citizenshipType==ByBirthIndigenousCommunity && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==ByBirthIndigenousCommunity || citizenshipTypeCode == ByBirthIndigenousCommunity) && ageCode == ADULT && !(foundLink))
   {
     return "600";
   } 
-  else if(citizenshipType==ByArticleNine && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==ByArticleNine || citizenshipTypeCode == ByArticleNine) && ageCode == ADULT && !(foundLink))
   {
     return "601";
   } 
-  else if(citizenshipType==ByNaturalisation && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==ByNaturalisation || citizenshipTypeCode == ByNaturalisation) && ageCode == ADULT && !(foundLink))
   {
     return "602";
   } 
-  else if(citizenshipType==ByRegistration && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==ByRegistration || citizenshipTypeCode == ByRegistration) && ageCode == ADULT && !(foundLink))
   {
     return "603";
   } 
-  else if(citizenshipType==dualCitizenship && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==dualCitizenship || citizenshipTypeCode == dualCitizenship) && ageCode == ADULT && !(foundLink))
   {
     return "604";
   } 
@@ -345,10 +355,6 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
   {
     return "020";
   } 
-  
-
-
-
   
   else {
     return "000";
