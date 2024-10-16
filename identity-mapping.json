@@ -3,6 +3,9 @@
         "IDSchemaVersion": {
             "value": "IDSchemaVersion"
         },
+        "locationHierarchyForProfiling": {
+			"value": "zone,postalCode"
+		},
         "name": {
             "value": "surname"
         },
