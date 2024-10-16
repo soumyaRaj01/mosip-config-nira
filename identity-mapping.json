@@ -173,7 +173,9 @@
 "userServiceType": {
             "value": "userServiceType"
         },
-        
+        "applicantCitizenshipType": {
+            "value": "userServiceType"
+        },
         "applicantPlaceOfOriginDistrict": {
             "value": "applicantPlaceOfOriginDistrict"
         },
