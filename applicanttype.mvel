@@ -188,27 +188,27 @@ def getApplicantType() {
   else if((citizenshipType==ByBirthIndigenousCommunity || citizenshipTypeCode == ByBirthIndigenousCommunity) && ageCode == ADULT && !(foundLink))
   {
     return "600";
-  } 
-  else if((citizenshipType==ByArticleNine || citizenshipTypeCode == ByArticleNine) && ageCode == ADULT && !(foundLink))
+  }
+  else if((citizenshipType==ByBirthIndigenousCommunity || citizenshipTypeCode == ByBirthIndigenousCommunity) && ageCode != ADULT && !(foundLink))
+  {
+    return "605";
+  }
+  else if((citizenshipType==ByArticleNine || citizenshipTypeCode == ByArticleNine) && !(foundLink))
   {
     return "601";
   } 
-  else if((citizenshipType==ByNaturalisation || citizenshipTypeCode == ByNaturalisation) && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==ByNaturalisation || citizenshipTypeCode == ByNaturalisation) && !(foundLink))
   {
     return "602";
   } 
-  else if((citizenshipType==ByRegistration || citizenshipTypeCode == ByRegistration) && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==ByRegistration || citizenshipTypeCode == ByRegistration) && !(foundLink))
   {
     return "603";
   } 
-  else if((citizenshipType==dualCitizenship || citizenshipTypeCode == dualCitizenship) && ageCode == ADULT && !(foundLink))
+  else if((citizenshipType==dualCitizenship || citizenshipTypeCode == dualCitizenship) && !(foundLink))
   {
     return "604";
-  } 
-  else if(ageCode == MINOR || ageCode == CHILD && !(foundLink))
-  {
-    return "605";
-  } 
+  }  
   else if(foundLink)
   {
     return "606";
