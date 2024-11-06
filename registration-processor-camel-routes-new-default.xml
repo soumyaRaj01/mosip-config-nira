@@ -369,7 +369,7 @@
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y')]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
@@ -396,7 +396,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y')]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
@@ -446,7 +446,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y')]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
