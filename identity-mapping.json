@@ -515,8 +515,8 @@
         "introducerRID": {
             "value": "introducerRID"
         },
-        "introducerUIN": {
-            "value": "declarantNIN"
+        "introducerNIN": {
+            "value": "introducerNIN"
         },
         "introducerVID": {
             "value": "introducerVID"
