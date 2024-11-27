@@ -29,6 +29,25 @@ String ByNaturalisation = "NAT";
 String ByRegistration = "CBREG";
 String ByArticleNine = "CUAN";
 
+String changeOfNameByOmittingOrAdding = "CNANN";
+String completeChangeOfName = "CCN";
+String changeOfNameMarriageOrDivorce = "CNRMD";
+String updateNameFromDocuments = "CNPBA";
+String changeNameByDeletingNicknames = "CNDNPT";
+String inclusionOrDeletionMaidenName = "IDMN";
+String changeToClarifyInitials = "CICI";
+String changeOrderOfNames = "CION";
+String changePlaceOfResidence = "CIPR";
+String changePlaceOfResidenceChild = "CIPRC";
+String correctionSpellingErrors = "CISNVS";
+String correctionPlaceOfOrigin = "CERPO";
+String correctionErrorNIN = "CERNIN";
+String correctionErrorParents = "CERPCC";
+String correctionPlaceOfOriginChild = "CERPOC";
+String getFirstID = "GFID";
+String changeInAge = "CIAGE";
+
+
 String fatherNIN;
 String motherNIN;
 
@@ -89,6 +108,26 @@ def getCitizenhipTypeCode(identity) {
     if (identity.containsKey('userServiceTypeCode')) {
         Object val = identity.getOrDefault('userServiceTypeCode', null);
         System.out.println("userServiceTypeCode: " + val);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+	
+    return null;
+}
+
+def getUserServiceTypeCop(identity) {
+    if (identity.containsKey('userServiceTypeCop')) {
+        Object val = identity.getOrDefault('userServiceTypeCop', null);
+        System.out.println("userServiceTypeCop: " + val);
+        return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+	
+    return null;
+}
+
+def getUserServiceTypeCopCode(identity) {
+    if (identity.containsKey('userServiceTypeCopCode')) {
+        Object val = identity.getOrDefault('userServiceTypeCopCode', null);
+        System.out.println("userServiceTypeCopCode: " + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
 	
@@ -173,6 +212,8 @@ def getApplicantType() {
   boolean isBioExPresent = getBioExceptionFlag(identity);
 
   String citizenshipType= getCitizenhipType(identity);
+  String userServiceTypeCop= getUserServiceTypeCop(identity);
+  String userServiceTypeCopCode= getUserServiceTypeCopCode(identity);
   String citizenshipTypeCode = getCitizenhipTypeCode(identity);
   String userCase= getUserCase(identity);
   String motherNIN= getMotherNIN(identity);
@@ -184,6 +225,47 @@ def getApplicantType() {
  if(userCase==Renewal)
   {
     return "001";
+  }
+  else if(userCase==Update){
+    if(userServiceTypeCopCode==changeOfNameByOmittingOrAdding || userServiceTypeCop==changeOfNameByOmittingOrAdding){
+        return "700";
+    }
+    else if(userServiceTypeCopCode==completeChangeOfName || userServiceTypeCop==completeChangeOfName){
+        return "701";
+    }
+    else if(userServiceTypeCopCode==changeOfNameMarriageOrDivorce || userServiceTypeCop==changeOfNameMarriageOrDivorce){
+        return "702";
+    }
+    else if(userServiceTypeCopCode==updateNameFromDocuments || userServiceTypeCop==updateNameFromDocuments){
+        return "703";
+    }
+    else if(userServiceTypeCopCode==changeNameByDeletingNicknames || userServiceTypeCop==changeNameByDeletingNicknames || userServiceTypeCopCode==changeToClarifyInitials || userServiceTypeCop==changeToClarifyInitials || userServiceTypeCopCode==changeOrderOfNames || userServiceTypeCop==changeOrderOfNames || userServiceTypeCopCode==correctionSpellingErrors || userServiceTypeCop==correctionSpellingErrors){
+        return "704";
+    }
+    else if(userServiceTypeCopCode==changePlaceOfResidence || userServiceTypeCop==changePlaceOfResidence || userServiceTypeCopCode==changePlaceOfResidenceChild || userServiceTypeCop==changePlaceOfResidenceChild){
+        return "705";
+    }
+    else if(userServiceTypeCopCode==correctionPlaceOfOrigin || userServiceTypeCop==correctionPlaceOfOrigin){
+        return "706";
+    }
+    else if(userServiceTypeCopCode==getFirstID || userServiceTypeCop==getFirstID){
+        return "707";
+    }
+    else if(userServiceTypeCopCode==changeInAge || userServiceTypeCop==changeInAge){
+        return "708";
+    }
+    else if(userServiceTypeCopCode==inclusionOrDeletionMaidenName || userServiceTypeCop==inclusionOrDeletionMaidenName){
+        return "709";
+    }
+    else if(userServiceTypeCopCode==correctionErrorParents || userServiceTypeCop==correctionErrorParents){
+        return "710";
+    }
+    else if(userServiceTypeCopCode==correctionPlaceOfOriginChild || userServiceTypeCop==correctionPlaceOfOriginChild){
+        return "711";
+    }
+    else if(userServiceTypeCopCode==correctionErrorNIN || userServiceTypeCop==correctionErrorNIN){
+        return "712";
+    }
   }
   else if((citizenshipType==ByBirthIndigenousCommunity || citizenshipTypeCode == ByBirthIndigenousCommunity) && ageCode == ADULT && !(foundLink))
   {
