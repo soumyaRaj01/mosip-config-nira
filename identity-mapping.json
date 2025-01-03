@@ -76,9 +76,6 @@
         "cardExpiryDate": {
             "value": "cardExpiryDate"
         },
-        "selectedHandles": {
-            "value": "selectedHandles"
-        },
         "renewalNIN": {
             "value": "renewalNIN"
         },
@@ -578,12 +575,6 @@
         "address": {
             "value": "District,County,SubCounty,Parish,Village,PollingStation"
         },
-        "phone_number": {
-            "value": "phone"
-        },
-        "individual_id": {
-            "value": "individual_id"
-        },
         "locality": {
             "value": "District"
         },
@@ -614,7 +605,7 @@
             "value": "proofOfRelationship"
         },
         "pob": {
-            "value": "proofOfDateOfBirth"
+            "value": "proofOfBirth"
         },
         "poadtn": {
             "value": "proofOfAdoption"
@@ -624,6 +615,30 @@
         },
         "poe": {
             "value": "proofOfException"
+        },
+		"poosd": {
+            "value": "proofOfOtherSupportingdocumentIssuedbyGovt"
+        },
+		"posd": {
+            "value": "proofOfOtherSupportingDocuments"
+        },
+		"polsd": {
+            "value": "proofOfLegalStatutoryDeclaration"
+        },
+		"popf": {
+            "value": "proofOfPhysicalApplicationForm"
+        },
+		"poabd": {
+            "value": "proofOfAbandonment"
+        },
+		"pomc": {
+            "value": "proofOfModificationConsent"
+        },
+		"pos": {
+            "value": "applicantProofOfSignature"
+        },
+		"pois": {
+            "value": "introducerProofOfSignature"
         }
     },
     "attributeUpdateCountLimit": {
