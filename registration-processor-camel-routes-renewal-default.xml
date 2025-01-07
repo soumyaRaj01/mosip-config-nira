@@ -338,10 +338,6 @@
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'manual-adjudication-bus-in')]</jsonpath>
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
-		 <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'INFANT')]</jsonpath>
-            <to uri="eventbus://verification-bus-in" />
-         </when>
          <otherwise>
             <to uri="eventbus://bio-dedupe-bus-in" />
          </otherwise>
@@ -403,20 +399,24 @@
          </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'verification-bus-in')]</jsonpath>
-            <to uri="eventbus://verification-bus-in" />
+            <to uri="eventbus://mvs-bus-in" />
          </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'abis-handler-bus-in')]</jsonpath>
             <to uri="eventbus://abis-handler-bus-in" />
+         </when>
+		 <when>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
          </when>
          <otherwise>
             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
-   <route id="verification route-->uin-generator renewal route">
-      <from uri="eventbus://verification-renewal-bus-out" />
-      <log message="verification route-->uin-generator renewal route ${bodyAs(String)}" />
+   <route id="mvs route-->uin-generation renewal route">
+      <from uri="eventbus://mvs-renewal-bus-out" />
+      <log message="mvs route-->uin-generator renewal route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -429,11 +429,11 @@
          </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
-            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://uin-generator-bus-in" />
+             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>

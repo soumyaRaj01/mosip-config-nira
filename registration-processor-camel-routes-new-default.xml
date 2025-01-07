@@ -293,10 +293,6 @@
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-		 <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'INFANT')]</jsonpath>
-            <to uri="eventbus://verification-bus-in" />
-         </when>
          <otherwise>
             <to uri="eventbus://bio-dedupe-bus-in" />
          </otherwise>
@@ -358,7 +354,7 @@
          </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'verification-bus-in')]</jsonpath>
-            <to uri="eventbus://verification-bus-in" />
+            <to uri="eventbus://mvs-bus-in" />
          </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'abis-handler-bus-in')]</jsonpath>
@@ -391,18 +387,22 @@
                <to uri="workflow-cmd://complete-as-rejected" />
                <to uri="workflow-cmd://anonymous-profile" />
             </when>
+		<when>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y' &amp;&amp; @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'N'  )]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
-             <to uri="eventbus://uin-generator-bus-in" />
+             <to uri="eventbus://mvs-bus-in" />
          </otherwise>
       </choice>
    </route>
-   <route id="verification route-->citizenship-verification new route">
-      <from uri="eventbus://verification-new-bus-out" />
-      <log message="verification route-->uin-generator new route ${bodyAs(String)}" />
+   <route id="mvs route-->uin-generation new route">
+      <from uri="eventbus://mvs-new-bus-out" />
+      <log message="mvs route-->uin-generator new route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -415,12 +415,8 @@
          </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
-            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
-         </when>
-		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y')]</jsonpath>
-            <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
              <to uri="eventbus://uin-generator-bus-in" />
@@ -468,8 +464,12 @@
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-         <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y')]</jsonpath>
+		 <when>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
+        <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y' &amp;&amp; @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'N'  )]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
@@ -492,8 +492,7 @@
             </when>
             <when>
                <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
-               <to uri="workflow-cmd://complete-as-rejected" />
-               <to uri="workflow-cmd://anonymous-profile" />
+               <to uri="eventbus://mvs-bus-in" />
             </when>
             <otherwise>
                <to uri="eventbus://uin-generator-bus-in" />
