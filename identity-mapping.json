@@ -586,7 +586,10 @@
         },
 		 "foundLink": {
             "value": "foundLink"
-        }
+        },
+		 "inDepthCitizenshipVerification": {
+            "value": "inDepthCitizenshipVerification"
+             }
     },
     "metaInfo": {
         "value": "metaInfo"
