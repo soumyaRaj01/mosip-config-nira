@@ -589,7 +589,8 @@
         },
 		 "inDepthCitizenshipVerification": {
             "value": "inDepthCitizenshipVerification"
-    }
+             }
+    },
     "metaInfo": {
         "value": "metaInfo"
     },
