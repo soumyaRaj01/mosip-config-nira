@@ -238,7 +238,6 @@
          </otherwise>
       </choice>
    </route>
-   </route>
     <route id="legacy-data-validator-stage-->demo-dedupe migrator  route">
       <from uri="eventbus://legacy-data-validator-migrator-bus-out" />
       <log message="legacy-data-validator-stage-->demo-dedupe migrator route ${bodyAs(String)}" />
@@ -261,6 +260,7 @@
             <to uri="eventbus://demo-dedupe-bus-in" />
          </otherwise>
       </choice>
+   </route>
    <route id="demo-dedupe-->bio-dedupe migrator route">
       <from uri="eventbus://demo-dedupe-migrator-bus-out" />
       <log message="demo-dedupe-->bio-dedupe migrator route ${bodyAs(String)}" />

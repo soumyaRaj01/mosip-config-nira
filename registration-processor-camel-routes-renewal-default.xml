@@ -266,7 +266,6 @@
          </otherwise>
       </choice>
    </route>
-   </route>
      <route id="legacy-data-validator-stage-->biometric-authentication renewal route">
       <from uri="eventbus://legacy-data-validator-renewal-bus-out" />
       <log message="legacy-data-validator-stage-->biometric-authentication route ${bodyAs(String)}" />
@@ -289,6 +288,7 @@
             <to uri="eventbus://biometric-authentication-bus-in" />
          </otherwise>
       </choice>
+	  </route>
    <route id="biometric-authentication-stage-->demo-dedupe renewal route">
       <from uri="eventbus://biometric-authentication-renewal-bus-out" />
       <log message="biometric-authentication-stage-->demo-dedupe renewal route ${bodyAs(String)}" />
