@@ -447,7 +447,7 @@
       </choice>
    </route>
    <route id="manual-adjudication-->citizenship-verification new route">
-      <from uri="eventbus://manual-adjudication-bus-out" />
+      <from uri="eventbus://manual-adjudication-new-bus-out" />
       <log message="manual-adjudication-->uin-generation new route ${bodyAs(String)}" />
       <choice>
          <when>
