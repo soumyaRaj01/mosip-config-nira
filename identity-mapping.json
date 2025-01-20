@@ -607,7 +607,7 @@
         "value": "audits"
     },
     "documents": {
-        "poa": {
+         "poa": {
             "value": "proofOfAddress"
         },
         "poi": {
@@ -617,7 +617,7 @@
             "value": "proofOfRelationship"
         },
         "pob": {
-            "value": "proofOfDateOfBirth"
+            "value": "proofOfBirth"
         },
         "poadtn": {
             "value": "proofOfAdoption"
@@ -627,6 +627,30 @@
         },
         "poe": {
             "value": "proofOfException"
+        },
+		"poosd": {
+            "value": "proofOfOtherSupportingdocumentIssuedbyGovt"
+        },
+		"posd": {
+            "value": "proofOfOtherSupportingDocuments"
+        },
+		"polsd": {
+            "value": "proofOfLegalStatutoryDeclaration"
+        },
+		"popf": {
+            "value": "proofOfPhysicalApplicationForm"
+        },
+		"poabd": {
+            "value": "proofOfAbandonment"
+        },
+		"pomc": {
+            "value": "proofOfModificationConsent"
+        },
+		"pos": {
+            "value": "applicantProofOfSignature"
+        },
+		"pois": {
+            "value": "introducerProofOfSignature"
         }
     },
     "attributeUpdateCountLimit": {
