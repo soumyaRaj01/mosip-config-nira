@@ -642,6 +642,9 @@
         },
 		"pois": {
             "value": "introducerProofOfSignature"
+        },
+	    "poreg": {
+            "value": "proofOfRegistration"
         }
     },
     "attributeUpdateCountLimit": {
