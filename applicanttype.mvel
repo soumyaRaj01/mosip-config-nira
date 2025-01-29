@@ -22,6 +22,7 @@ String New = 	 "NEW";
 String Renewal = "RENEWAL";
 String Lost= 	 "LOST";
 String Update =  "UPDATE";
+String FirstID = "FIRSTID";
 
 String dualCitizenship= "DLN";
 String ByBirthIndigenousCommunity = "CBBI";
@@ -44,7 +45,6 @@ String correctionPlaceOfOrigin = "CERPO";
 String correctionErrorNIN = "CERNIN";
 String correctionErrorParents = "CERPCC";
 String correctionPlaceOfOriginChild = "CERPOC";
-String getFirstID = "GFID";
 String changeInAge = "CIAGE";
 
 
@@ -226,6 +226,9 @@ def getApplicantType() {
   {
     return "001";
   }
+ else if(userCase==FirstID){
+            return "707";
+  }
   else if(userCase==Update){
     if(userServiceTypeCopCode==changeOfNameByOmittingOrAdding || userServiceTypeCop==changeOfNameByOmittingOrAdding){
         return "700";
@@ -248,9 +251,6 @@ def getApplicantType() {
     else if(userServiceTypeCopCode==correctionPlaceOfOrigin || userServiceTypeCop==correctionPlaceOfOrigin){
         return "706";
     }
-    else if(userServiceTypeCopCode==getFirstID || userServiceTypeCop==getFirstID){
-        return "707";
-    }
     else if(userServiceTypeCopCode==changeInAge || userServiceTypeCop==changeInAge){
         return "708";
     }
@@ -265,6 +265,9 @@ def getApplicantType() {
     }
     else if(userServiceTypeCopCode==correctionErrorNIN || userServiceTypeCop==correctionErrorNIN){
         return "712";
+    }
+    else{
+	 return "700";
     }
   }
   else if((citizenshipType==ByBirthIndigenousCommunity || citizenshipTypeCode == ByBirthIndigenousCommunity) && ageCode == ADULT && !(foundLink))
