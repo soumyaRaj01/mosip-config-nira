@@ -347,7 +347,7 @@
          </otherwise>
       </choice>
    </route>
-   <route id="bio-dedupe-->citizenship-verification new route">
+   <route id="bio-dedupe-->legacy-data route">
       <from uri="eventbus://bio-dedupe-new-bus-out" />
       <log message="bio-dedupe-->uin-generation new route ${bodyAs(String)}" />
       <choice>
@@ -377,16 +377,8 @@
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'manual-adjudication-bus-in')]</jsonpath>
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
-		 <when>
-            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
-            <to uri="eventbus://mvs-bus-in" />
-         </when>
-		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y' &amp;&amp; @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'N'  )]</jsonpath>
-            <to uri="eventbus://citizenship-verification-bus-in" />
-         </when>
          <otherwise>
-             <to uri="eventbus://mvs-bus-in" />
+              <to uri="eventbus://legacy-data-bus-in" />
          </otherwise>
       </choice>
    </route>
