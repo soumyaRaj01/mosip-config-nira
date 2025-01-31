@@ -52,7 +52,7 @@ String fatherNIN;
 String motherNIN;
 
 String DATE_PATTERN = "dd/MM/yyyy";
-String regex = "^\\d{4}(\\/)(((0)[1-9])|((1)[0-2]))(\\/)([0-2][0-9]|(3)[0-1])$";
+String regex = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[1-9])|((1)[0-2]))(\\/)(\\d{4})$";
 Pattern pattern = Pattern.compile(regex);
 
 def isUpdateFlow(identity) {
