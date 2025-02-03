@@ -171,30 +171,22 @@ def getAgeCode(identity) {
    return ageGroup == null ? null : ageGroup;
 }
 
-def getAgeCodeCop(identity) {
-    if(ageGroups == null || !identity.containsKey('dateOfBirthCop'))
+def getAgeCop(identity) {
+    if(!identity.containsKey('dateOfBirthCop'))
         return null;
 
-    String dob = identity.get('dateOfBirthCop');
-    if(!pattern.matcher(dob).matches())
+    String dobcop = identity.get('dateOfBirthCop');
+    if(!pattern.matcher(dobcop).matches())
         return null;
         
-    LocalDate date = LocalDate.parse(dob, DateTimeFormatter.ofPattern(DATE_PATTERN));
+    LocalDate date = LocalDate.parse(dobcop, DateTimeFormatter.ofPattern(DATE_PATTERN));
     LocalDate currentDate = LocalDate.now(ZoneId.of("UTC"));
     
     if(date.isAfter(currentDate)) { return 'KER-MSD-151'; }
     
     int ageInYears = Period.between(date, currentDate).getYears();
-    
-    String ageGroup = null;
-    for(String groupName : ageGroups.keySet()) {
-        String[] range = ((String)ageGroups.get(groupName)).split('-');
-        if(ValueRange.of(Long.valueOf(range[0]), Long.valueOf(range[1])).isValidIntValue(ageInYears)) {
-            ageGroup = groupName;
-        }
-    }
 
-   return ageGroup == null ? null : ageGroup;
+   return ageInYears == null ? null : ageInYears;
 }
 
 def getBioExceptionFlag(identity) {
@@ -206,7 +198,7 @@ def getBioExceptionFlag(identity) {
 def getApplicantType() {
   String itc = getResidenceStatus(identity);
   String genderType = getGenderType(identity);
-  String ageCodeCop = getAgeCodeCop(identity);
+  int ageCop = getAgeCop(identity);
   String ageCode = getAgeCode(identity);
   boolean isBioExPresent = getBioExceptionFlag(identity);
 
@@ -248,7 +240,7 @@ def getApplicantType() {
 		result += "702,";
 	}
 	if(changeInPlaceOfBirth) {
-		if(ageCodeCop == ADULT) {
+		if(ageCop > 17) {
 			result += "703,";
 		}
 		else {
@@ -256,7 +248,7 @@ def getApplicantType() {
 		}
 	}
 	if(changeInPlaceOfOrigin) {
-		if(ageCodeCop == ADULT) {
+		if(ageCop > 17) {
 			result += "705,";
 		}
 		else {
