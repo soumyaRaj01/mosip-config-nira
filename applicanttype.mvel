@@ -227,7 +227,7 @@ def getApplicantType() {
     return "001";
   }
  else if(userCase==FirstID){
-            return "707";
+            return "800";
   }
   else if(userCase==Update){
     if(userServiceTypeCopCode==changeOfNameByOmittingOrAdding || userServiceTypeCop==changeOfNameByOmittingOrAdding){
