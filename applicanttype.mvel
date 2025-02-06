@@ -228,6 +228,9 @@ def getApplicantType() {
   {
     return "001";
   }
+ else if(userCase==FirstID){
+            return "800";
+  }
   else if(userCase==Update){
 	String result = "";
     if(addingName || removingName || changeOrderOfNames || completeChangeofName){
